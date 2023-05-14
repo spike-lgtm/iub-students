@@ -1,12 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:home_widget/home_widget.dart';
 
 void main() {
-  runApp(const MyApp());
+  WidgetsFlutterBinding.ensureInitialized();
+  HomeWidget.registerBackgroundCallback(backgroundCallback);
+  runApp(MyApp());
+}
+
+Future<void> backgroundCallback(Uri? uri) async {
+  if (uri!.host == 'updatecounter') {
+    int counter = 0;
+    await HomeWidget.getWidgetData<int>('_counter', defaultValue: 0).then((value) {
+      counter = value!;
+      counter++;
+    });
+    await HomeWidget.saveWidgetData<int>('_counter', counter);
+    await HomeWidget.updateWidget(name: 'AppWidgetProvider', iOSName: 'AppWidgetProvider');
+  }
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -15,7 +28,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
 }
@@ -26,16 +39,36 @@ class MyHomePage extends StatefulWidget {
   final String title;
 
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  _MyHomePageState createState() => _MyHomePageState();
 }
 
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
 
+  @override
+  void initState() {
+    super.initState();
+    HomeWidget.widgetClicked.listen((Uri? uri) => loadData());
+    loadData(); // This will load data from widget every time app is opened
+  }
+
+  void loadData() async {
+    await HomeWidget.getWidgetData<int>('_counter', defaultValue: 0).then((value) {
+      _counter = value!;
+    });
+    setState(() {});
+  }
+
+  Future<void> updateAppWidget() async {
+    await HomeWidget.saveWidgetData<int>('_counter', _counter);
+    await HomeWidget.updateWidget(name: 'AppWidgetProvider', iOSName: 'AppWidgetProvider');
+  }
+
   void _incrementCounter() {
     setState(() {
       _counter++;
     });
+    updateAppWidget();
   }
 
   @override
@@ -48,12 +81,12 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            const Text(
+            Text(
               'You have pushed the button this many times:',
             ),
             Text(
               '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
+              style: Theme.of(context).textTheme.headline4,
             ),
           ],
         ),
@@ -61,7 +94,7 @@ class _MyHomePageState extends State<MyHomePage> {
       floatingActionButton: FloatingActionButton(
         onPressed: _incrementCounter,
         tooltip: 'Increment',
-        child: const Icon(Icons.add),
+        child: Icon(Icons.add),
       ),
     );
   }
