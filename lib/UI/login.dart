@@ -1,7 +1,7 @@
-import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:iub_students/UI/screen_wrapper.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -185,7 +185,10 @@ class _LoginPageState extends State<LoginPage> {
             ),
             MaterialButton(
               onPressed: () {
-
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const ScreenWrapper()),
+                );
               },
               height: 45,
               color: const Color(0xff3347B0),
