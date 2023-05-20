@@ -16,9 +16,9 @@ class _ClassesState extends State<Classes> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          Text(
+          const Text(
             "Your Classes",
-            style: TextStyle(fontSize: 32),
+            style: TextStyle(fontSize: 30, fontWeight: FontWeight.normal),
           ),
           SizedBox(
             height: 10,
@@ -42,9 +42,6 @@ class _ClassesState extends State<Classes> {
               children: _buildRoutine(),
             )),
           ),
-          SizedBox(
-            height: 20,
-          )
         ],
       ),
     );
@@ -84,7 +81,7 @@ class _ClassesState extends State<Classes> {
                 style: TextStyle(
                     color: Colors.grey,
                     fontSize: 20,
-                    fontWeight: FontWeight.w500),
+                    fontWeight: FontWeight.w400),
               ),
               SizedBox(
                 height: 10,
@@ -147,6 +144,7 @@ class _ClassesState extends State<Classes> {
         ),
       );
     }
+    widgets.add(const SizedBox(height: 20));
     return widgets;
   }
 }

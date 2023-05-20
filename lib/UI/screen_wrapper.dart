@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:iub_students/UI/classes.dart';
+import 'package:iub_students/UI/profile.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 
 class ScreenWrapper extends StatefulWidget {
@@ -53,7 +54,7 @@ class _ScreenWrapperState extends State<ScreenWrapper> {
   List<Widget> _buildScreens() {
     return [
       const Classes(),
-      Placeholder(),
+      const Profile(),
       Placeholder()
 
     ];

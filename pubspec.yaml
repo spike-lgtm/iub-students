@@ -38,6 +38,7 @@ dependencies:
   iconsax: ^0.0.8
   persistent_bottom_nav_bar: ^5.0.2
   intl: ^0.18.1
+  animated_text_kit: ^4.2.2
 
 dev_dependencies:
   flutter_test:
