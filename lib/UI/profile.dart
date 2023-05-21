@@ -103,7 +103,7 @@ class _ProfileState extends State<Profile> {
                                 fontWeight: FontWeight.w300),
                           ),
                           Text(
-                            "3.97",
+                            "0",
                             style: TextStyle(
                                 color: Colors.white,
                                 fontSize: 30,
@@ -122,7 +122,7 @@ class _ProfileState extends State<Profile> {
                                 fontWeight: FontWeight.w300),
                           ),
                           Text(
-                            "68",
+                            "0",
                             style: TextStyle(
                                 color: Colors.white,
                                 fontSize: 30,

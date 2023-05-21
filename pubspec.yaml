@@ -39,6 +39,7 @@ dependencies:
   persistent_bottom_nav_bar: ^5.0.2
   intl: ^0.18.1
   animated_text_kit: ^4.2.2
+  loading_animation_widget: ^1.2.0+4
 
 dev_dependencies:
   flutter_test:
