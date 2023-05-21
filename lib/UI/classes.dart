@@ -114,7 +114,7 @@ class _ClassesState extends State<Classes> {
       children: [
         Container(
           width: double.infinity, // Sets the width to the screen width
-          height: 90,
+          height: MediaQuery.of(context).size.height * 0.12,
           color: const Color(0xffEBF1F8),
           child: Row(
             children: [
@@ -124,7 +124,7 @@ class _ClassesState extends State<Classes> {
                 width: 5,
               ),
               SizedBox(
-                width: 220,
+                width: MediaQuery.of(context).size.width * 0.55,
                 child: Padding(
                   padding: const EdgeInsets.all(14.0),
                   child: Column(
@@ -139,7 +139,7 @@ class _ClassesState extends State<Classes> {
                       Text(
                         buildCourseText(course.name),
                         style: TextStyle(
-                            fontSize: 16, fontWeight: FontWeight.w400),
+                            fontSize: 14, fontWeight: FontWeight.w400),
                       ),
                       SizedBox(
                         height: 5,

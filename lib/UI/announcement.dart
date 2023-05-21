@@ -50,7 +50,7 @@ class _AnnouncementState extends State<Announcement> {
                     width: 240,
                     child: SingleChildScrollView(
                       child: Text(
-                        "IIntroduction to Computer Science Introduction to Computer Introduction to Computer Science Introduction to Computer Introduction to Computer Science Introduction to Computer Introduction to Computer Science Introduction to Computer Introduction to Computer Science Introduction to Computer ",
+                        "Summer 23 academic calendar ",
                         style: TextStyle(
                             fontSize: 14, fontWeight: FontWeight.w500),
                       ),

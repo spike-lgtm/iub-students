@@ -36,10 +36,12 @@ class MyApp extends StatelessWidget {
             } else if (snapshot.hasError) {
               return const Center(child: Text("Error Processing Data, Please try again!"),);
             } else {
-              return Center(
-                child: LoadingAnimationWidget.prograssiveDots(
-                  color: const Color(0xff3347B0),
-                  size: 200,
+              return Scaffold(
+                body: Center(
+                  child: LoadingAnimationWidget.prograssiveDots(
+                    color: const Color(0xff3347B0),
+                    size: 75,
+                  ),
                 ),
               );
             }

@@ -139,7 +139,7 @@ class _ProfileState extends State<Profile> {
                   SizedBox(
                     child: DefaultTextStyle(
                       style: const TextStyle(
-                          fontSize: 40,
+                          fontSize: 35,
                           fontWeight: FontWeight.w200,
                           color: Colors.white),
                       child: AnimatedTextKit(

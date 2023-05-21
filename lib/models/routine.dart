@@ -30,26 +30,36 @@ class Routine {
       saturday: parseCourseList(json['Saturday']),
     );
   }
-
   List<Course> getCourseList(int dayOfWeek) {
+    List<Course> courses;
     switch (dayOfWeek) {
       case 1:
-        return monday;
+        courses = sunday;
+        break;
       case 2:
-        return tuesday;
+        courses = monday;
+        break;
       case 3:
-        return wednesday;
+        courses = tuesday;
+        break;
       case 4:
-        return thursday;
+        courses = wednesday;
+        break;
       case 5:
-        return friday;
+        courses = thursday;
+        break;
       case 6:
-        return saturday;
+        courses = friday;
+        break;
       case 7:
-        return sunday;
+        courses = saturday;
+        break;
       default:
         throw Exception('Invalid day of week');
     }
+
+    courses.sort((a, b) => a.startTime.compareTo(b.startTime));
+    return courses;
   }
 
   static List<Course> parseCourseList(List<dynamic> list) {
